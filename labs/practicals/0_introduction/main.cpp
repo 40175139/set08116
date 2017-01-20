@@ -140,7 +140,7 @@ bool render() {
 
 int main() {
   // Create application
-  app application("Welcome to Computer Graphics!", renderer::windowed);
+  app application("Welcome to Computer Graphics2!", renderer::windowed);
   // Set load content, update and render methods
   application.set_load_content(load_content);
   application.set_update(update);
