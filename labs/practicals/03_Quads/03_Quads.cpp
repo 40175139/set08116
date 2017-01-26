@@ -15,7 +15,13 @@ bool load_content() {
   vector<vec3> positions{
       // *********************************
       // Add the position data for two triangles here
+	  vec3(-2.0f, 2.0f, 0.0f),
+	  vec3(-2.0f, -2.0f, 0.0f),
+	  vec3(2.0f, -2.0f, 0.0f),
 
+	  vec3(2.0f, 2.0f, 0.0f),
+	  vec3(-2.0f, 2.0f, 0.0f),
+	  vec3(2.0f, -2.0f, 0.0f)
 
       // *********************************
   };

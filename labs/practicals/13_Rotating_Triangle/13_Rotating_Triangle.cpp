@@ -13,7 +13,10 @@ float theta = 0.0f;
 bool load_content() {
   // Create triangle data
   // Positions
-  vector<vec3> positions{vec3(0.0f, 1.0f, 0.0f), vec3(-1.0f, -1.0f, 0.0f), vec3(1.0f, -1.0f, 0.0f)};
+  vector<vec3> positions{
+	  vec3(0.0f, 2.0f, 0.0f),
+	  vec3(-2.0f, -2.0f, 0.0f),
+	  vec3(2.0f, -2.0f, 0.0f)};
   // Colours
   vector<vec4> colours{vec4(1.0f, 0.0f, 0.0f, 1.0f), vec4(1.0f, 0.0f, 0.0f, 1.0f), vec4(1.0f, 0.0f, 0.0f, 1.0f)};
   // Add to the geometry
@@ -45,9 +48,22 @@ bool update(float delta_time) {
 bool render() {
   // Bind effect
   renderer::bind(eff);
-  mat4 R;
+  //mat4 R;
+  /*rotateZ(float zangle);
+
+mat4 Rotatez(const float theta)
+  {
+	  float s = M_PI / 180.0*theta; //convert degrees to radians
+	  mat4 ; // an identity matrix
+	  c[2][2] = c[3][3] = 1.0;
+	  c[0][0] = c[1][1] = cos(s);
+	  c[1][0] = sin(s);
+	  c[0][1] = -c[1][0];
+  }*/
   // *********************************
   // Create rotation matrix - rotate around Z axis by theta
+  
+ mat4 R = rotate(mat4(1.0f), theta, vec3(0.0f, 0.0f, 1.0f));
 
   // *********************************
   // Create MVP matrix
