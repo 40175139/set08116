@@ -18,25 +18,77 @@ bool load_content() {
       // *********************************
       // Add the position data for triangles here, (6 verts per side)
       // Front
+	  vec3(2.0f, 2.0f, -2.0f),
+	  vec3(2.0f, -2.0f, -2.0f),
+	  vec3(-2.0f, -2.0f, -2.0f),
 
+	  vec3(-2.0f, -2.0f, -2.0f),
+	  vec3(-2.0f, 2.0f, -2.0f),
+	  vec3(2.0f, 2.0f, -2.0f),
+	  /*vec3(2.0f, 2.0f, -2.0f),
+	  vec3(-2.0f, 2.0f, -2.0f),
+	  vec3(-2.0f, -2.0f, -2.0f),
+
+	  vec3(-2.0f, -2.0f, -2.0f),
+	  vec3(2.0f, -2.0f, -2.0f),
+	  vec3(2.0f, 2.0f, -2.0f),*/
 
       // Back
+	  vec3(-2.0f, 2.0f, 2.0f),
+	  vec3(-2.0f, -2.0f, 2.0f),
+	  vec3(2.0f, -2.0f, 2.0f),
 
+	  vec3(-2.0f, 2.0f, 2.0f),
+	  vec3(2.0f, -2.0f, 2.0f),
+	  vec3(2.0f, 2.0f, 2.0f),
+	  /*vec3(-2.0f, 2.0f, 2.0f),
+	  vec3(2.0f, 2.0f, 2.0f),
+	  vec3(2.0f, -2.0f, 2.0f),
+
+	  vec3(-2.0f, 2.0f, 2.0f),
+	  vec3(2.0f, -2.0f, 2.0f),
+	  vec3(-2.0f, -2.0f, 2.0f),*/
 
       // Right
+	  vec3(2.0f, 2.0f, -2.0f),
+	  vec3(2.0f, 2.0f, 2.0f),
+	  vec3(2.0f, -2.0f, -2.0f),
 
+	  vec3(2.0f, 2.0f, 2.0f),
+	  vec3(2.0f, -2.0f, 2.0f),
+	  vec3(2.0f, -2.0f, -2.0f),
 
       // Left
+	  vec3(-2.0f, 2.0f, 2.0f),
+	  vec3(-2.0f, 2.0f, -2.0f),
+	  vec3(-2.0f, -2.0f, 2.0f),
 
+	  vec3(-2.0f, 2.0f, -2.0f),
+	  vec3(-2.0f, -2.0f, -2.0f),
+	  vec3(-2.0f, -2.0f, 2.0f),
 
       // Top
+	  vec3(-2.0f, 2.0f, 2.0f),
+	  vec3(2.0f, 2.0f, 2.0f),
+	  vec3(-2.0f, 2.0f, -2.0f),
 
+	  vec3(2.0f, 2.0f, 2.0f),
+	  vec3(2.0f, 2.0f, -2.0f),
+	  vec3(-2.0f, 2.0f, -2.0f),
 
       // Bottom
+	  vec3(-2.0f, -2.0f, -2.0f),
+	  vec3(2.0f, -2.0f, -2.0f),
+	  vec3(-2.0f, -2.0f, 2.0f),
 
+	  vec3(2.0f, -2.0f, -2.0f),
+	  vec3(2.0f, -2.0f, 2.0f),
+	  vec3(-2.0f, -2.0f, 2.0f),
 
       // *********************************
+	  
   };
+  glDisable(GL_DEPTH_TEST);
   // Colours
   vector<vec4> colours;
   for (auto i = 0; i < positions.size(); ++i) {
@@ -75,6 +127,7 @@ bool update(float delta_time) {
   }
   // Update the camera
   cam.update(delta_time);
+  //glCullFace(GL_FRONT);
   return true;
 }
 
