@@ -19,23 +19,59 @@ bool load_content() {
   vector<vec3> positions{
       // *********************************
       // Add the position data for triangles here, (6 verts per side)
-      // Front
+	  // Front
+	  vec3(2.0f, 2.0f, 2.0f),
+	  vec3(-2.0f, -2.0f, 2.0f),
+	  vec3(2.0f, -2.0f, 2.0f),
 
+	  vec3(-2.0f, -2.0f, 2.0f),
+	  vec3(2.0f, 2.0f, 2.0f),
+	  vec3(-2.0f, 2.0f, 2.0f),
 
-      // Back
+	  // Back
+	  vec3(-2.0f, 2.0f, -2.0f),
+	  vec3(2.0f, -2.0f, -2.0f),
+	  vec3(-2.0f, -2.0f, -2.0f),
 
+	  vec3(-2.0f, 2.0f, -2.0f),
+	  vec3(2.0f, 2.0f, -2.0f),
+	  vec3(2.0f, -2.0f, -2.0f),
 
-      // Right
+	  // Right
+	  vec3(2.0f, 2.0f, 2.0f),
+	  vec3(2.0f, -2.0f, 2.0f),
+	  vec3(2.0f, 2.0f, -2.0f),
 
+	  vec3(2.0f, 2.0f, -2.0f),
+	  vec3(2.0f, -2.0f, 2.0f),
+	  vec3(2.0f, -2.0f, -2.0f),
 
-      // Left
+	  // Left
+	  vec3(-2.0f, 2.0f, -2.0f),
+	  vec3(-2.0f, -2.0f, -2.0f),
+	  vec3(-2.0f, 2.0f, 2.0f),
 
+	  vec3(-2.0f, 2.0f, 2.0f),
+	  vec3(-2.0f, -2.0f, -2.0f),
+	  vec3(-2.0f, -2.0f, 2.0f),
 
-      // Top
+	  // Top
+	  vec3(-2.0f, 2.0f, -2.0f),
+	  vec3(-2.0f, 2.0f, 2.0f),
+	  vec3(2.0f, 2.0f, -2.0f),
 
+	  vec3(2.0f, 2.0f, -2.0f),
+	  vec3(-2.0f, 2.0f, 2.0f),
+	  vec3(2.0f, 2.0f, 2.0f),
 
-      // Bottom
+	  // Bottom
+	  vec3(-2.0f, -2.0f, 2.0f),
+	  vec3(-2.0f, -2.0f, -2.0f),
+	  vec3(2.0f, -2.0f, 2.0f),
 
+	  vec3(2.0f, -2.0f, 2.0f),
+	  vec3(-2.0f, -2.0f, -2.0f),
+	  vec3(2.0f, -2.0f, -2.0f)
 
       // *********************************
   };
@@ -71,32 +107,24 @@ bool update(float delta_time) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	
+	// UP
+	if (glfwGetKey(renderer::get_window(), GLFW_KEY_W)) {
+		theta -= pi<float>() * delta_time;
+	}
+	// DOWN
+	if (glfwGetKey(renderer::get_window(), GLFW_KEY_S)) {
+		theta += pi<float>() * delta_time;
+	}
+	// RIGTH
+	if (glfwGetKey(renderer::get_window(), GLFW_KEY_D)) {
+		theta -= pi<float>() * delta_time;
+	}
+	//LEFT
+	if (glfwGetKey(renderer::get_window(), GLFW_KEY_A)) {
+		theta += pi<float>() * delta_time;
+	}
+	
 
   // *********************************
   // Update the camera
@@ -107,12 +135,14 @@ bool update(float delta_time) {
 bool render() {
   // Bind effect
   renderer::bind(eff);
-  mat4 T, R, S, M;
+  //mat4 T, R, S, M;
   // *********************************
   // Create transformation matrix
+  mat4 T = translate(mat4(1.0f), pos);
+  mat4 R = rotate(mat4(1.0f), theta, vec3(1.0f, 0.0f, 0.0f));
+  mat4 S = scale(mat4(1.0f), vec3(2.0f, 2.0f, 2.0f));
 
-
-
+  mat4 M = T *(R * S);
 
   // *********************************
   // Create MVP matrix
