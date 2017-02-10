@@ -9,32 +9,42 @@ geometry geom;
 effect eff;
 target_camera cam;
 
-const int num_points = 50000;
+const int num_points = 500000;
 
 void create_sierpinski(geometry &geom) {
-  vector<vec3> points;
-  vector<vec4> colours;
-  // Three corners of the triangle
-  array<vec3, 3> v = {vec3(-1.0f, -1.0f, 0.0f), vec3(0.0f, 1.0f, 0.0f), vec3(1.0f, -1.0f, 0.0f)};
-  // Create random engine - generates random numbers
-  default_random_engine e;
-  // Create a distribution.  3 points in array so want 0-2
-  uniform_int_distribution<int> dist(0, 2);
-  // Add first point to the geometry
-  points.push_back(vec3(0.25f, 0.5f, 0.0f));
-  // Add first colour to the geometry
-  colours.push_back(vec4(1.0f, 0.0f, 0.0f, 1.0f));
+	vector<vec3> points;
+	vector<vec4> colours;
+	// Three corners of the triangle
+	array<vec3, 3> v = { vec3(-1.0f, -1.0f, 0.0f), vec3(0.0f, 1.0f, 0.0f), vec3(1.0f, -1.0f, 0.0f) };
+	// Create random engine - generates random numbers
+	default_random_engine e;
+	// Create a distribution.  3 points in array so want 0-2
+	uniform_int_distribution<int> dist(0, 2);
+	// Add first point to the geometry
+	points.push_back(vec3(0.2f, 0.5f, 0.0f));
+	// Add first colour to the geometry
+	colours.push_back(vec4(1.0f, 0.0f, 0.0f, 1.0f));
   // Add random points using distribution
-  for (auto i = 1; i < num_points; ++i) {
-    // *********************************
-    // Add random point
-	  //auto n = dist(e);
+  for (int i = 1; i < num_points; ++i) {
+	  // *********************************
+	  // Add random point
+	  auto n = dist(e);
+
+	  vec3 point = ((points[i - 1] + v[n]) / 2.0f);
+
+	  points.push_back(point);
+	 // v[0] = (v[0] + )
+	 // n = ((n-1) + v (rand) / 2.0)
+
+	  //v[0] = (v[0] + points[n][0]) / 2.0;
+	  //v[1] = (v[1] + points[n][1]) / 2.0;
 	  
 
     // Add colour - all points red
-	 // vector<vec4> colours{ vec4(1.0f, 0.0f, 0.0f, 1.0f), vec4(1.0f, 0.0f, 0.0f, 1.0f), vec4(1.0f, 0.0f, 0.0f, 1.0f) };
+	  
     // *********************************
   }
+  //vector<vec4> colours{ vec4(1.0f, 0.0f, 0.0f, 1.0f), vec4(1.0f, 0.0f, 0.0f, 1.0f), vec4(1.0f, 0.0f, 0.0f, 1.0f) };
   // *********************************
   // Add buffers to geometry
   geom.add_buffer(points, BUFFER_INDEXES::POSITION_BUFFER);
