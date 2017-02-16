@@ -89,12 +89,11 @@ bool update(float delta_time) {
 bool render() {
   // Bind effect
   renderer::bind(eff);
-  mat4 M;
   // *********************************
   // Get the model transform from the mesh
   auto M = m.get_transform().get_transform_matrix();
-  auto V = m.get_transform().get_transform_matrix();
-  auto P = m.get_transform().get_transform_matrix();
+//  auto V = m.get_transform().get_transform_matrix();
+  //auto P = m.get_transform().get_transform_matrix();
 
   // *********************************
   // Create MVP matrix6
